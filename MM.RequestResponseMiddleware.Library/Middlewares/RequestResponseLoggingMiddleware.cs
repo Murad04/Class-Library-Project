@@ -12,7 +12,6 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
 {
     public class RequestResponseLoggingMiddleware : BaseRequestResponseMiddleware
     {
-
         public RequestResponseLoggingMiddleware(RequestDelegate next, RequestResponseOptions requestResponseOptions) : base(next)
         {
         }

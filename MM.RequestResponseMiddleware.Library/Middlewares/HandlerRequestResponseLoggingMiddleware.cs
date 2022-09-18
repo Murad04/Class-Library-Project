@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MM.RequestResponseMiddleware.Library.Middlewares
 {
-    internal class HandlerRequestResponseLoggingMiddleware : BaseRequestResponseMiddleware
+    public class HandlerRequestResponseLoggingMiddleware : BaseRequestResponseMiddleware
     {
         private readonly Func<RequestResponseContext,Task> requestResponseHandler;
 
