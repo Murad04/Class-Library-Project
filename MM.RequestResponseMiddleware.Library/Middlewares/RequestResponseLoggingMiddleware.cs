@@ -19,9 +19,7 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
-            var requestResponseContext = BaseMiddlewareInvoke(context);
+            await BaseMiddlewareInvoke(context);
         }
-
-
     }
 }
