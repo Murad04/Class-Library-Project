@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MM.RequestResponseMiddleware.Library.Middlewares
 {
-    internal class HandlerRequestResponseLogginMiddleware : BaseRequestResponseMiddleware
+    internal class HandlerRequestResponseLoggingMiddleware : BaseRequestResponseMiddleware
     {
-        private readonly Func<RequestResponseOptions,Task> requestResponseHandler;
+        private readonly Func<RequestResponseContext,Task> requestResponseHandler;
 
-        public HandlerRequestResponseLogginMiddleware(RequestDelegate next, Func<RequestResponseOptions,Task> requestResponseHandler):base(next)
+        public HandlerRequestResponseLoggingMiddleware(RequestDelegate next, Func<RequestResponseContext, Task> requestResponseHandler):base(next)
         {
             this.requestResponseHandler = requestResponseHandler;
         }
