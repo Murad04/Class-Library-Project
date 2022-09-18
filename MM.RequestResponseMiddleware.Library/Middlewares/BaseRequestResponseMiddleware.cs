@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.IO;
+using MM.RequestResponseMiddleware.Library.Interfaces;
 using MM.RequestResponseMiddleware.Library.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,12 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
         private readonly RequestResponseOptions requestResponseOptions;
         private readonly RecyclableMemoryStreamManager recyclableMemoryStreamManager;
         private readonly RequestDelegate next;
+        private readonly ILogWriter logWriter;
 
-
-        public BaseRequestResponseMiddleware(RequestDelegate next)
+        public BaseRequestResponseMiddleware(RequestDelegate next,ILogWriter logWriter)
         {
             this.next = next;
+            this.logWriter = logWriter;
         }
 
         protected async Task<RequestResponseContext> BaseMiddlewareInvoke(HttpContext context)
@@ -42,12 +44,16 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
             context.Request.Body.Seek(0, SeekOrigin.Begin);
 
 
-            return new RequestResponseContext(context)
+            var result= new RequestResponseContext(context)
             {
                 RequestBody = requestBody,
                 ResponseCreationTime = TimeSpan.FromTicks(stopWatch.ElapsedTicks),
                 ResponseBody = responseBodyText,
             };
+
+            await logWriter.Write(result);
+
+            return result;
         }
 
         private static string ReadStreamInChunks(Stream stream)

@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MM.RequestResponseMiddleware.Library.Interfaces
 {
-    public interface ILogWriter
+    public interface ILogMessageCreator
     {
-        ILogMessageCreator MessageCreator { get; set; }
-        Task Write(RequestResponseContext context);
+        string Create(RequestResponseContext context);
     }
 }

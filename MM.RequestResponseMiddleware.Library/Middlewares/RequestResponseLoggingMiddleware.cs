@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using MM.RequestResponseMiddleware.Library.Interfaces;
 using MM.RequestResponseMiddleware.Library.Models;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,16 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
 {
     public class RequestResponseLoggingMiddleware : BaseRequestResponseMiddleware
     {
-        public RequestResponseLoggingMiddleware(RequestDelegate next, RequestResponseOptions requestResponseOptions) : base(next)
+        private readonly ILogWriter logWriter;
+
+        public RequestResponseLoggingMiddleware(RequestDelegate next, ILogWriter logWriter) : base(next,logWriter)
         {
+            this.logWriter = logWriter;
         }
 
         public async Task Invoke(HttpContext context)
         {
-            await BaseMiddlewareInvoke(context);
+            var requestersponsecontext = await BaseMiddlewareInvoke(context);
         }
     }
 }

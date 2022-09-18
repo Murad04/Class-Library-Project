@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using MM.RequestResponseMiddleware.Library.Interfaces;
+using MM.RequestResponseMiddleware.Library.MessageCreators;
 using MM.RequestResponseMiddleware.Library.Models;
 using System;
 using System.Collections.Generic;
@@ -13,16 +14,24 @@ namespace MM.RequestResponseMiddleware.Library.LogWriters
     {
         private readonly ILogger iLogger;
         private readonly LoggingOptions loggingOptions;
+        public ILogMessageCreator MessageCreator { get; set; } = null!;
 
-        public LoggerFactoryLogWriter(ILoggerFactory loggerFactory,LoggingOptions loggingOptions)
+        public LoggerFactoryLogWriter(ILoggerFactory loggerFactory, LoggingOptions loggingOptions)
         {
             this.iLogger = loggerFactory.CreateLogger(loggingOptions.LoggerCategoryName);
             this.loggingOptions = loggingOptions;
+
+            MessageCreator=new LoggerFactoryMessageCreator(loggingOptions);
         }
 
-        public Task Write(RequestResponseContext context)
+
+        public async Task Write(RequestResponseContext context)
         {
+            var message = MessageCreator.Create(context);
+
             iLogger.Log(loggingOptions.LogLevel, "");
+
+            await Task.CompletedTask;
         }
     }
 }
