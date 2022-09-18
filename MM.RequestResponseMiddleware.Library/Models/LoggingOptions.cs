@@ -10,7 +10,7 @@ namespace MM.RequestResponseMiddleware.Library.Models
 {
     public class LoggingOptions
     {
-        private List<LogFields> loggingFields;
+        private List<LogFields> loggingFields = null!;
 
         public LogLevel LogLevel { get; set; } = LogLevel.Information;
 
