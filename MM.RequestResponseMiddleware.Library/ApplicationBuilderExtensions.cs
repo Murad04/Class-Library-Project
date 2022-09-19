@@ -19,7 +19,7 @@ namespace MM.RequestResponseMiddleware.Library
                 : new LoggerFactoryLogWriter(options.LoggerFactory, options.LoggingOptions);
 
             if (options.RequestResponseHandler is not null) appBuilder.UseMiddleware<HandlerRequestResponseLoggingMiddleware>(options.RequestResponseHandler, logWriter);
-            else appBuilder.UseMiddleware<RequestResponseLoggingMiddleware>(options.RequestResponseHandler, logWriter);
+            else appBuilder.UseMiddleware<RequestResponseLoggingMiddleware>(logWriter);
 
             return appBuilder;
         }

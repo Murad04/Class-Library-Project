@@ -35,7 +35,7 @@ namespace MM.RequestResponseMiddleware.Library.Models
         public int? RequestLength => RequestBody?.Length;
         public int? ResponseLength => ResponseBody?.Length;
         public string? FormattedCreationTime => 
-            FormattedCreationTime is null ?
+            ResponseCreationTime is null ?
             "00:00:000" :
             string.Format("{0:mm\\:ss\\.fff}", ResponseCreationTime);
     }

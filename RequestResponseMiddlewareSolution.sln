@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.RequestResponseMiddleware.Library", "MM.RequestResponseMiddleware.Library\MM.RequestResponseMiddleware.Library.csproj", "{AD869178-B21E-4185-8959-AC79B50323D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MM.RequestResponseMiddleware.Library", "MM.RequestResponseMiddleware.Library\MM.RequestResponseMiddleware.Library.csproj", "{AD869178-B21E-4185-8959-AC79B50323D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.RequestResponseMiddleware.TestAPI", "MM.RequestResponseMiddleware.TestAPI\MM.RequestResponseMiddleware.TestAPI.csproj", "{DBC697E9-ED09-4115-BE9A-72827D5A7923}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AD869178-B21E-4185-8959-AC79B50323D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD869178-B21E-4185-8959-AC79B50323D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD869178-B21E-4185-8959-AC79B50323D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBC697E9-ED09-4115-BE9A-72827D5A7923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBC697E9-ED09-4115-BE9A-72827D5A7923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBC697E9-ED09-4115-BE9A-72827D5A7923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBC697E9-ED09-4115-BE9A-72827D5A7923}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

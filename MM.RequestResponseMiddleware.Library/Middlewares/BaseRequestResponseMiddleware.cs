@@ -13,7 +13,7 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
 {
     public abstract class BaseRequestResponseMiddleware
     {
-        private readonly RecyclableMemoryStreamManager recyclableMemoryStreamManager = null!;
+        private readonly RecyclableMemoryStreamManager recyclableMemoryStreamManager;
         private readonly RequestDelegate next;
         private readonly ILogWriter logWriter;
 
@@ -21,6 +21,7 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
         {
             this.next = next;
             this.logWriter = logWriter;
+            recyclableMemoryStreamManager=new RecyclableMemoryStreamManager();
         }
 
         protected async Task<RequestResponseContext> BaseMiddlewareInvoke(HttpContext context)
@@ -38,9 +39,9 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
 
             stopWatch.Stop();
 
-            context.Request.Body.Seek(0, SeekOrigin.Begin);
+            context.Response.Body.Seek(0, SeekOrigin.Begin);
             string responseBodyText = await new StreamReader(context.Response.Body).ReadToEndAsync();
-            context.Request.Body.Seek(0, SeekOrigin.Begin);
+            context.Response.Body.Seek(0, SeekOrigin.Begin);
 
 
             var result = new RequestResponseContext(context)
