@@ -1,7 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using MM.RequestResponseMiddleware.Library.Interfaces;
-using MM.RequestResponseMiddleware.Library.MessageCreators;
-using MM.RequestResponseMiddleware.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

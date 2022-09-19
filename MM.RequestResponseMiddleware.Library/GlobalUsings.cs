@@ -9,3 +9,6 @@ global using MM.RequestResponseMiddleware.Library.Interfaces;
 global using MM.RequestResponseMiddleware.Library.LogWriters;
 global using MM.RequestResponseMiddleware.Library.Middlewares;
 global using MM.RequestResponseMiddleware.Library.Models;
+
+global using MM.RequestResponseMiddleware.Library.Enum;
+global using MM.RequestResponseMiddleware.Library.MessageCreators;
