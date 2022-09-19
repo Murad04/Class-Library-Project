@@ -13,11 +13,8 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
 {
     public class RequestResponseLoggingMiddleware : BaseRequestResponseMiddleware
     {
-        private readonly ILogWriter logWriter;
-
         public RequestResponseLoggingMiddleware(RequestDelegate next, ILogWriter logWriter) : base(next,logWriter)
         {
-            this.logWriter = logWriter;
         }
 
         public async Task Invoke(HttpContext context)

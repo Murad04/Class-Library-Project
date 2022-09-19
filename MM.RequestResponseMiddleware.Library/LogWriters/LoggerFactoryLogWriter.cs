@@ -14,14 +14,14 @@ namespace MM.RequestResponseMiddleware.Library.LogWriters
     {
         private readonly ILogger iLogger;
         private readonly LoggingOptions loggingOptions;
-        public ILogMessageCreator MessageCreator { get; set; } = null!;
+        public ILogMessageCreator MessageCreator { get; } = null!;
 
         public LoggerFactoryLogWriter(ILoggerFactory loggerFactory, LoggingOptions loggingOptions)
         {
             this.iLogger = loggerFactory.CreateLogger(loggingOptions.LoggerCategoryName);
             this.loggingOptions = loggingOptions;
 
-            MessageCreator=new LoggerFactoryMessageCreator(loggingOptions);
+            MessageCreator = new LoggerFactoryMessageCreator(loggingOptions);
         }
 
 

@@ -13,12 +13,11 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
 {
     public abstract class BaseRequestResponseMiddleware
     {
-        private readonly RequestResponseOptions requestResponseOptions;
-        private readonly RecyclableMemoryStreamManager recyclableMemoryStreamManager;
+        private readonly RecyclableMemoryStreamManager recyclableMemoryStreamManager = null!;
         private readonly RequestDelegate next;
         private readonly ILogWriter logWriter;
 
-        public BaseRequestResponseMiddleware(RequestDelegate next,ILogWriter logWriter)
+        public BaseRequestResponseMiddleware(RequestDelegate next, ILogWriter logWriter)
         {
             this.next = next;
             this.logWriter = logWriter;
@@ -44,7 +43,7 @@ namespace MM.RequestResponseMiddleware.Library.Middlewares
             context.Request.Body.Seek(0, SeekOrigin.Begin);
 
 
-            var result= new RequestResponseContext(context)
+            var result = new RequestResponseContext(context)
             {
                 RequestBody = requestBody,
                 ResponseCreationTime = TimeSpan.FromTicks(stopWatch.ElapsedTicks),
