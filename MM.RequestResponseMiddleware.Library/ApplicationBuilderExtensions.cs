@@ -14,6 +14,9 @@ namespace MM.RequestResponseMiddleware.Library
             var options = new RequestResponseOptions();
             optionActions(options);
 
+            if (options.RequestResponseHandler is null && options.LoggerFactory is null)
+                throw new ArgumentNullException($"{nameof(options.RequestResponseHandler)} and {nameof(options.LoggerFactory)}");
+
             ILogWriter logWriter = options.LoggerFactory is null
                 ? new NullLogWriter()
                 : new LoggerFactoryLogWriter(options.LoggerFactory, options.LoggingOptions);
